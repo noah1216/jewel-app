@@ -8,7 +8,7 @@
       <li><%= link_to 'マイページ', "#", class: "login" %></li>
       <li><%= link_to current_seller.nickname, "#", class: "user-nickname"%></li> 
       <li><%= link_to 'ログアウト', destroy_seller_session_path, method: :delete, class: "login" %></li>
-      <li><%= link_to '出品', "#", class: "logout"%></li>
+      <li><%= link_to '出品', new_item_path, class: "logout"%></li>
       <% elsif user_signed_in? %>
       <li><%= link_to 'マイページ', "#", class: "login" %></li>
       <li><%= link_to current_user.nickname, "#", class: "user-nickname" %></li>
