@@ -1,0 +1,39 @@
+<%# CSS・・・assets/stylesheets/shared/header.css %>
+<header class='top-page-header'>
+  <div class='nav-box'>
+  <div class='nav'>
+    <%= link_to image_tag("logo-icon2.png", class:"logo-icon"), "/"  %>
+    <ul class='lists-right'>
+      <% if seller_signed_in? %> 
+      <li><%= link_to 'マイページ', "#", class: "login" %></li>
+      <li><%= link_to current_seller.nickname, "#", class: "user-nickname"%></li> 
+      <li><%= link_to 'ログアウト', destroy_seller_session_path, method: :delete, class: "login" %></li>
+      <li><%= link_to '出品', "#", class: "logout"%></li>
+      <% elsif user_signed_in? %>
+      <li><%= link_to 'マイページ', "#", class: "login" %></li>
+      <li><%= link_to current_user.nickname, "#", class: "user-nickname" %></li>
+      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li> 
+      <% else %>
+      <li><%= link_to '購入者ログイン', new_user_session_path, class: "login" %></li>
+      <li><%= link_to '出品者ログイン', new_seller_session_path, class: "login" %></li>
+      <li><%= link_to '購入者会員登録', new_user_registration_path, class: "btn--g" %></li>
+      <li><%= link_to '出品者会員登録', new_seller_registration_path, class: "btn--y" %></li>
+      <% end %>
+    </ul>
+  </div>
+  </div>
+  <div class='search-box'>
+  <div class='search-bar-contents'>
+    <ul class='lists-left'>
+      <li><%= link_to 'カテゴリー', "#", class: "category-list" %></li>
+    </ul>
+    <form class="search-form" action="#">
+      <input class='input-box' placeholder='キーワードから探す'>
+      <button class="search-button">
+        <%= image_tag "search.png", class:"search-icon" %> 
+      </button>
+    </form>
+    
+  </div>
+  </div>
+</header>
