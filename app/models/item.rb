@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   belongs_to :state
   belongs_to :shopping_fee
   belongs_to :shopping_day
+  belongs_to :area
 
   belongs_to :seller
   # has_one :order
