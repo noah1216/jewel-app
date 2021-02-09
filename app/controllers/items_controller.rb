@@ -1,6 +1,12 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all.order('created_at DESC')
+    # items = Item.order('created_at DESC')
+      items = Item.all
+    if items.length < 8
+      @items = items.order('created_at DESC')
+    else
+      @items = Item.last(8).reverse
+    end
   end
 
   def new
@@ -14,6 +20,10 @@ class ItemsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @item = Item.find(params[:id])
   end
 
 

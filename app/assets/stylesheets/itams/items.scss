@@ -112,12 +112,26 @@ a {
   font-weight: bold;
 }
 
+
+
+.mama{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
 .item-lists {
-  width: 80vw;
+  width: 90vw;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
+}
 
+
+.item-lists::after{
+  content:"";
+  display: block;
+  width:25%;
 }
 
 .item-lists>.list {
@@ -190,13 +204,6 @@ a {
 
 
 
-
-
-.mama{
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-}
 
 .messages {
   width: 55vw;
