@@ -29,7 +29,8 @@
       <% if current_seller == @item.seller %>
         <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
         <p class='or-text'>or</p>
-        <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
+        <%= link_to '削除', item_path(@item.id), method: :delete,  
+                                  data: {confirm: "<i class='fa fa-exclamation-circle'></i>本当に「<strong>#{@item.name}</strong>」を削除しますか?", cancel: "キャンセル", commit: "削除"}, class:'item-destroy' %>
       <% else %>
         <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
       <% end %>
