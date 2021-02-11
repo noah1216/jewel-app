@@ -1,24 +1,33 @@
-# README
+# JeweLinks
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## アプリケーション概要
+ユーザー登録ができます。
+また、ユーザーは購入者と出品者に分けて登録できます。
+商品を出品できます。
+商品を購入できます。
+（商品を検索することができます。お気に入り機能があります。）
 
-Things you may want to cover:
+## URL
 
-* Ruby version
 
-* System dependencies
+## テスト用アカウント
+購入者
+出品者
+Basic認証
 
-* Configuration
+## 利用方法
 
-* Database creation
 
-* Database initialization
+## 目指した課題解決
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## 洗い出した要件
 
-* Deployment instructions
+## 実装した機能についてのGIFと説明
 
-* ...
+## 実装予定の機能
+
+## データベース設計
+
+## ローカルでの動作方法
+

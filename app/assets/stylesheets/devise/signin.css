@@ -16,7 +16,6 @@
 }
 .form-wrap {
   width: 90%;
-  
   background-color: white;
   margin: 0 auto;
   border: 6px dashed #312e29;
@@ -52,6 +51,7 @@
 .form-text-wrap {
   width: 100%;
   height: 20%;
+  display: flex;
 }
 
 .form-text {

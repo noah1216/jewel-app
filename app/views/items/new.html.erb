@@ -1,8 +1,9 @@
 <div class="items-sell-contents">
   <header class="items-sell-header">
-    <%= link_to image_tag('logo-icon2.png' , size: '185x50'), "/" %>
+    <%= link_to image_tag('logo-icon2.png' , size: '185x70'), "/" %>
 
   </header>
+  <div class="items-sell-box">
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with model: @item, local: true do |f| %>
@@ -112,14 +113,14 @@
     </div>
   </div>
   <% end %>
-
+  </div>
   <footer class="items-sell-footer">
-    <ul class="menu">
-      <li><a href="#">プライバシーポリシー</a></li>
-      <li><a href="#">JeweLinks利用規約</a></li>
-      <li><a href="#">特定商取引に関する表記</a></li>
+    <ul class="menu ">
+      <li><a href="#" class= "default_link_white">プライバシーポリシー</a></li>
+      <li><a href="#" class= "default_link_white">JeweLinks利用規約</a></li>
+      <li><a href="#" class= "default_link_white">特定商取引に関する表記</a></li>
     </ul>
-    <%= link_to image_tag('logo-icon2.png' , size: '185x50'), "/" %>
+    <%= link_to image_tag('logo-icon2.png' , size: '185x70'), "/" %>
     <p class="inc">
       ©︎2020 JeweLinks,Inc.
     </p>
