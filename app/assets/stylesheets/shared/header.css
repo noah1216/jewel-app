@@ -53,7 +53,6 @@
   border: 0;
   cursor: pointer;
   background-color: #382d28;
-  padding: 8px;
 }
 
 
@@ -114,17 +113,11 @@
 
 .login {
   text-decoration: none;
-  /* line-height: 32px; */
+  line-height: 32px;
   margin-right: 2vw;
   color: #ffffff;
 }
 
-/* .sign-up {
-  text-decoration: none;
-  color: #1d1d1d;
-  margin-right: 2vw;
-  font-weight: bold;
-} */
 
 span{
   color: #1d1d1d;
@@ -144,6 +137,13 @@ span{
   align-items: center;
   margin-right: 20px;
 }
+.btn--g:link,
+.btn--g:visited,
+.btn--g:active {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
 
 .btn--y{
   border-radius: 40px;
@@ -157,4 +157,39 @@ span{
   justify-content: center;
   align-items: center;
   margin-right: 20px;
+}
+
+.btn--y:link,
+.btn--y:visited,
+.btn--y:active {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+
+
+
+a.default_link_white:link,
+a.default_link_white:visited,
+a.default_link_white:active {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+a.default_link_white:hover{
+  color: #208e92;
+}
+
+
+
+
+a.default_link_brown:link,
+a.default_link_brown:visited,
+a.default_link_brown:active {
+  color: #382d28;
+  text-decoration: none;
+}
+
+a.default_link_brown:hover{
+  color: #208e92;
 }

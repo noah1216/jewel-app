@@ -167,10 +167,15 @@ a {
 }
 
 
+a.default_link_none{
+  text-decoration: none;
+}
+
 .item-info {
   // background-color: #FFF;
   color: black;
   padding: 1vw;
+  text-decoration: none;
 }
 
 .item-name {
@@ -199,6 +204,7 @@ a {
 .star-count {
   font-size: 2vh;
 }
+
 
 
 
