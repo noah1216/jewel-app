@@ -37,3 +37,14 @@
 .footer>p {
   font-size: 14px;
 }
+
+a.default_link_white:link,
+a.default_link_white:visited,
+a.default_link_white:active {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+a.default_link_white:hover{
+  color: #208e92;
+}

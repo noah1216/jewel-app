@@ -29,7 +29,8 @@
       <% if current_seller == @item.seller %>
         <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
         <p class='or-text'>or</p>
-        <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
+        <%= link_to '削除', item_path(@item.id), method: :delete,  
+                                  data: {confirm: "<i class='fa fa-exclamation-circle'></i>本当に「<strong>#{@item.name}</strong>」を削除しますか?", cancel: "キャンセル", commit: "削除"}, class:'item-destroy' %>
       <% else %>
         <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
       <% end %>
@@ -72,7 +73,7 @@
         <span>お気に入り 0</span>
       </div>
       <div class="report-btn">
-        <%# <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%> %>
+        <%# <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%> 
         <span>不適切な商品の通報</span>
       </div>
     </div>
@@ -88,7 +89,7 @@
         不快な言葉遣いなどは利用制限や退会処分となることがあります。
       </p>
       <button type="submit" class="comment-btn">
-        <%# <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%> %>
+        <%# <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%> 
         <span>コメントする<span>
       </button>
     </form>

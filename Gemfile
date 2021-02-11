@@ -59,3 +59,7 @@ gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'active_hash'
 gem 'payjp'
+
+gem 'uglifier'
+gem 'jquery-rails'
+gem 'bootstrap'
