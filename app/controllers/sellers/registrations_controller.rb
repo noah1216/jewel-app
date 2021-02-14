@@ -8,20 +8,28 @@ class Sellers::RegistrationsController < Devise::RegistrationsController
   def new
     @seller = Seller.new
   end
-
-  # POST /resource
+ 
   def create
     @seller = Seller.new(sign_up_params)
-    unless @seller.valid?
-      render :new and return
-    end
-    # 次のページに値を保持するために必要
+     unless @seller.valid?
+       render :new and return
+     end
     session["devise.regist_data"] = {seller: @seller.attributes}
     session["devise.regist_data"][:seller]["password"] = params[:seller][:password]
-    # addressのインスタンス生成
     @address = @seller.build_address_seller
-    # addressesコントローラのnewを指定。
-    render "address_sellers/new"
+    render :new_address
+  end
+
+  def create_address
+    @seller = Seller.new(session["devise.regist_data"]["seller"])
+    @address = AddressSeller.new(address_params)
+     unless @address.valid?
+       render :new_address and return
+     end
+    @seller.build_address_seller(@address.attributes)
+    @seller.save
+    session["devise.regist_data"]["seller"].clear
+    sign_in(:seller, @seller)
   end
  
   private
@@ -29,7 +37,6 @@ class Sellers::RegistrationsController < Devise::RegistrationsController
   def address_params
     params.require(:address_seller).permit(:postal_code, :area, :city, :block_number, :phone_number, :house_number)
   end
-
   # GET /resource/edit
   # def edit
   #   super

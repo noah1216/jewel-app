@@ -1,0 +1,16 @@
+<%= render "shared/header" %> 
+
+<div class="contents row">
+  <div class="mypage-main">
+    <div class="mypage-profile">
+
+    <h2>ようこそ　<%= @user.nickname %>さん</h2>
+    <%# <% @tweets.each do |tweet| %> 
+  <%# <%= render partial: "tweets/tweet", locals: { tweet: tweet } %> 
+    <%# <% end %> 
+    </div>
+    <div class="mypage-profile">
+      <%= link_to 'ユーザー編集',  edit_my_user_path(current_user.id), class: "login default_link_white" %>
+    </div>
+  </div>
+</div>

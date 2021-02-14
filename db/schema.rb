@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_09_060933) do
+ActiveRecord::Schema.define(version: 2021_02_13_124239) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -35,25 +35,38 @@ ActiveRecord::Schema.define(version: 2021_02_09_060933) do
 
   create_table "address_sellers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postal_code", null: false
-    t.integer "area", null: false
+    t.string "area", null: false
     t.string "city", null: false
     t.string "block_number", null: false
     t.string "house_number"
     t.string "phone_number", null: false
-    t.bigint "seller_id"
+    t.bigint "seller_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["seller_id"], name: "index_address_sellers_on_seller_id"
   end
 
-  create_table "address_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "address_shippings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postal_code", null: false
-    t.integer "area", null: false
+    t.string "area", null: false
     t.string "city", null: false
     t.string "block_number", null: false
     t.string "house_number"
     t.string "phone_number", null: false
-    t.bigint "user_id"
+    t.bigint "order_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_address_shippings_on_order_id"
+  end
+
+  create_table "address_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "postal_code", null: false
+    t.string "area", null: false
+    t.string "city", null: false
+    t.string "block_number", null: false
+    t.string "house_number"
+    t.string "phone_number", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_address_users_on_user_id"
@@ -72,6 +85,15 @@ ActiveRecord::Schema.define(version: 2021_02_09_060933) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["seller_id"], name: "index_items_on_seller_id"
+  end
+
+  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_orders_on_item_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "sellers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -111,5 +133,10 @@ ActiveRecord::Schema.define(version: 2021_02_09_060933) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "address_sellers", "sellers"
+  add_foreign_key "address_shippings", "orders"
+  add_foreign_key "address_users", "users"
   add_foreign_key "items", "sellers"
+  add_foreign_key "orders", "items"
+  add_foreign_key "orders", "users"
 end
