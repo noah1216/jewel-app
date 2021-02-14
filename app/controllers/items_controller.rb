@@ -1,4 +1,7 @@
 class ItemsController < ApplicationController
+  # before_action :authenticate_user!, except: [:index, :show]
+  before_action :return_home, except: [:index, :show]
+
   def index
     # items = Item.order('created_at DESC')
       items = Item.all
@@ -37,7 +40,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to root_path
+      redirect_to edit_my_user_path(current_user.id)
     else
       render :edit
     end
@@ -55,6 +58,11 @@ class ItemsController < ApplicationController
 
   private
 
+  def return_home
+    unless seller_signed_in? || user_signed_in?
+      redirect_to root_path
+    end 
+  end
 
 
   def item_params

@@ -61,5 +61,5 @@ gem 'active_hash'
 gem 'payjp'
 
 gem 'uglifier'
-gem 'jquery-rails'
 gem 'bootstrap'
+gem 'payjp'

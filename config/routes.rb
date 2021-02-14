@@ -11,11 +11,20 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  devise_scope :user do
+    get 'address_users', to: 'users/registrations#new_address'
+    post 'address_users', to: 'users/registrations#create_address'
+  end
 
-  resources :address_users
-  resources :address_sellers
-  resources :items
-  
+  devise_scope :seller do
+    get 'address_sellers', to: 'sellers/registrations#new_address'
+    post 'address_sellers', to: 'sellers/registrations#create_address'
+  end
+
+
+  resources :my_users, only: [:show, :update, :edit]
+  resources :items, except: :index do
+    resources :orders, only: [:index, :create]
+  end
   root to: "items#index"
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

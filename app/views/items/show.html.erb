@@ -9,11 +9,11 @@
     <div class='item-img-content'>
       <%= image_tag @item.image ,class:"item-box-img" %>
 
-      <%# <% if @item.order != nil %> 
-        <%# <div class='sold-out'> %>
-          <%# <span>Sold Out!!</span> %>
-        <%# </div> %>
-      <%# <% end %> 
+      <% if @item.order != nil %> 
+        <div class='sold-out'>
+         <span>Sold Out!!</span> 
+         </div>
+      <% end %>
 
     </div>
     <div class="item-price-box">
@@ -25,14 +25,14 @@
       </span>
     </div>
 
-    <% if user_signed_in? || seller_signed_in? %>
+    <% if user_signed_in? && @item.order == nil || seller_signed_in? && @item.order == nil %>
       <% if current_seller == @item.seller %>
         <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
         <p class='or-text'>or</p>
         <%= link_to '削除', item_path(@item.id), method: :delete,  
                                   data: {confirm: "<i class='fa fa-exclamation-circle'></i>本当に「<strong>#{@item.name}</strong>」を削除しますか?", cancel: "キャンセル", commit: "削除"}, class:'item-destroy' %>
       <% else %>
-        <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
+        <%= link_to '購入画面に進む', item_orders_path(@item.id),class:"item-red-btn"%>
       <% end %>
     <% end %>
 
