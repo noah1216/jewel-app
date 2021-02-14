@@ -62,3 +62,4 @@ gem 'payjp'
 
 gem 'uglifier'
 gem 'bootstrap'
+gem 'payjp'

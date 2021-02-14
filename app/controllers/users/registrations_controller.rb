@@ -51,7 +51,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
      unless @address.valid?
        render :new_address and return
      end
-    @user.build_address(@address.attributes)
+    @user.build_address_user(@address.attributes)
     @user.save
     session["devise.regist_data"]["user"].clear
     sign_in(:user, @user)

@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   # before_action :authenticate_user!, except: [:index, :show]
+  before_action :return_home, except: [:index, :show]
 
   def index
     # items = Item.order('created_at DESC')
@@ -57,6 +58,11 @@ class ItemsController < ApplicationController
 
   private
 
+  def return_home
+    unless seller_signed_in? || user_signed_in?
+      redirect_to root_path
+    end 
+  end
 
 
   def item_params
