@@ -24,6 +24,9 @@ Rails.application.routes.draw do
 
   resources :my_users, only: [:show, :update, :edit]
   resources :items, except: :index do
+    collection do
+      get 'search'
+    end
     resources :orders, only: [:index, :create]
   end
   root to: "items#index"

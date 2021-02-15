@@ -27,5 +27,13 @@ class Item < ApplicationRecord
     validates :area_id
     validates :shopping_day_id
   end
+
+  def self.search(search)
+    if search != ""
+      Item.where('name LIKE(?) OR text LIKE(?) OR price LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%")
+    else
+      Item.all
+    end
+  end
 end
 
