@@ -10,6 +10,7 @@ class Item < ApplicationRecord
   has_one :order
   has_one_attached :image
 
+
   validates :price, format: { with: /\A[0-9]+\z/ },
                     numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 
@@ -26,6 +27,14 @@ class Item < ApplicationRecord
     validates :shopping_fee_id
     validates :area_id
     validates :shopping_day_id
+  end
+
+  def self.search(search)
+    if search != ""
+      Item.where('name LIKE(?) OR text LIKE(?) OR price LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%")
+    else
+      Item.all
+    end
   end
 end
 

@@ -1,0 +1,114 @@
+<%# CSS・・・assets/stylesheets/shared/header.css %>
+<header class='top-page-header'>
+  <div class='nav-box'>
+  <div class='nav'>
+    <%= link_to image_tag("logo-icon2.png", class:"logo-icon"), "/"  %>
+    <ul class='lists-right'>
+      <% if seller_signed_in? %> 
+      <li><%= link_to 'マイページ', "#", class: "login default_link_white" %></li>
+      <li><%= link_to current_seller.nickname, "#", class: "user-nickname default_link_white"%></li> 
+      <li><%= link_to 'ログアウト', destroy_seller_session_path, method: :delete, class: "login default_link_white" %></li>
+      <li><%= link_to '出品', new_item_path, class: "logout default_link_white" %></li>
+      <% elsif user_signed_in? %>
+      <li><%= link_to 'マイページ', my_user_path(current_user.id), class: "login default_link_white" %></li>
+      <li><%= link_to current_user.nickname, "#", class: "user-nickname default_link_white" %></li>
+      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout default_link_white" %></li> 
+      <% else %>
+      <li><%= link_to '購入者ログイン', new_user_session_path, class: "login default_link_white" %></li>
+      <li><%= link_to '出品者ログイン', new_seller_session_path, class: "login default_link_white" %></li>
+      <li><%= link_to '購入者会員登録', new_user_registration_path, class: "btn--g" %></li>
+      <li><%= link_to '出品者会員登録', new_seller_registration_path, class: "btn--y" %></li>
+      <% end %>
+    </ul>
+  </div>
+  </div>
+  <div class='search-detail-box'>
+  <div class='search-bar-contents'>
+    <ul class='lists-left'>
+      <li><%= link_to '詳細検索', searchs_path, class: "category-list default_link_brown" %></li>
+    </ul>
+    <%= search_form_for @p, url: searchs_search_path do |f| %>
+      <div class="category_search right-margin15">
+        <%= f.label :category_id_eq, 'カテゴリー' %>
+        <br>
+        <%= f.collection_select :category_id_eq, Category.all, :id, :name, include_blank: '指定なし'%>
+      </div>
+      <div class="category_search right-margin15">
+        <%= f.label :shopping_fee_id_eq, '送料' %>
+        <br>
+        <%= f.collection_select :shopping_fee_id_eq, ShoppingFee.all, :id, :name, include_blank: '指定なし'%>
+      </div>
+      <div class="category_search right-margin15">
+        <%= f.label :shopping_day_id_eq, '発送日' %>
+        <br>
+        <%= f.collection_select :shopping_day_id_eq, ShoppingDay.all, :id, :name, include_blank: '指定なし'%>
+      </div>
+      <div class="category_search right-margin15">
+        <%= f.label :state_id_eq, '商品状態' %>
+        <br>
+        <%= f.collection_select :state_id_eq, State.all, :id, :name, include_blank: '指定なし'%>
+      </div>
+      <div class="category_search right-margin15">
+        <%= f.label :price, '価格' %>
+        
+        <br>
+        <%= f.radio_button :price_lteq, '' %>
+        指定なし
+        <%= f.radio_button :price_lteq, '1000' %>
+        10000円以下
+        <br>
+        <%= f.radio_button :price_lteq, '5000' %>
+        5000円以下
+        <%= f.radio_button :price_lteq, '10000' %>
+        10000円以下
+      </div>
+      <div class="search-detail-btn-box right-margin15">
+        <%= f.submit '検索',class: 'search-detail-btn' %>
+      </div>
+    <% end %>
+    
+    </div>
+  </div>
+</header>
+ <div class='items-search-box'>
+    <div class='items-contents'>
+      <h2>検索アイテム</h2>
+    </div>
+    <div class="mama">
+    <ul class='item-lists'> 
+      <% if @items.length > 0 %> 
+        <% @items.each do |item| %>
+          <li class='list'>
+            <%= link_to item_path(item.id),class: "default_link_none" do %>
+            <div class='item-img-content'>
+              <%= image_tag item.image, class: "item-img" %>
+              <% if item.order != nil  %> 
+                <div class='sold-out'>
+                  <span>Sold Out!!</span> 
+                </div> 
+              <% end %> 
+            </div>
+              <div class='item-info'>
+                <h3 class='item-name'>
+                  <%= item.name %>
+                </h3>
+                <div class='item-price'>
+                  <span><%= item.price %>円<br><%= item.shopping_fee.name %></span>
+                  <div class='star-btn'>
+                    <%= image_tag "imageimage.png", class:"star-icon" %>
+                    <span class='star-count'>0</span>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      <% else %> 
+          <div class="list-none">
+            <p>商品が見つかりませんでした</p>
+          </div>
+      <% end %>
+    </ul>
+    </div>
+  </div>
+<%= render "shared/footer" %> 

@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   # before_action :authenticate_user!, except: [:index, :show]
   before_action :return_home, except: [:index, :show]
-
+  
   def index
     # items = Item.order('created_at DESC')
       items = Item.all
@@ -55,6 +55,12 @@ class ItemsController < ApplicationController
       render :show
     end
   end
+
+
+  def search
+    @items = Item.search(params[:keyword])
+  end
+
 
   private
 

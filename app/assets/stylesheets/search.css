@@ -1,0 +1,44 @@
+.items-search-box{
+  padding: 50px 0;
+}
+
+.list-none{
+  height: 150px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+/* 詳細検索 */
+
+.search-detail-box{
+  padding: 1vh 5vw ;
+  display: flex;
+  flex-direction: column;
+  background-color: #eee5b0ef;
+}
+
+.item_search{
+  display: flex;
+align-items: center;
+}
+
+.category_search{
+  text-align: center;
+}
+
+.right-margin15{
+  margin-right: 15px;
+}
+
+.search-detail-btn-box{
+  display: flex;
+  align-items: center;
+}
+
+.search-detail-btn{
+  height: 30px;
+  width: 50px;
+}
