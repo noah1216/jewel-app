@@ -27,13 +27,55 @@
     <ul class='lists-left'>
       <li><%= link_to '詳細検索', searchs_path, class: "category-list default_link_brown" %></li>
     </ul>
-    <%= form_with(url: search_items_path, local: true, method: :get, class: "search-form") do |form| %>
-      <%= form.text_field :keyword, placeholder: "キーワードを検索する", class: "input-box" %>
-      <%= button_tag type: :submit, class: "search-button" do %>
-        <%= image_tag "search.png", class:"search-icon" %>
-      <% end %>
-    <% end %>
+<%= search_form_for @p, url: searchs_search_path do |f| %>
+  <%= f.label :name_eq, '商品名' %>
+  <%= f.collection_select :name_eq, @item_name, :name, :name, include_blank: '指定なし' %>
+  <br>
+  <%= f.submit '検索' %>
+<% end %>
     
   </div>
   </div>
 </header>
+ <div class='items-search-box'>
+    <div class='items-contents'>
+      <h2>検索アイテム</h2>
+    </div>
+    <div class="mama">
+    <ul class='item-lists'> 
+      <% if @items.length > 0 %> 
+        <% @items.each do |item| %>
+          <li class='list'>
+            <%= link_to item_path(item.id),class: "default_link_none" do %>
+            <div class='item-img-content'>
+              <%= image_tag item.image, class: "item-img" %>
+              <% if item.order != nil  %> 
+                <div class='sold-out'>
+                  <span>Sold Out!!</span> 
+                </div> 
+              <% end %> 
+            </div>
+              <div class='item-info'>
+                <h3 class='item-name'>
+                  <%= item.name %>
+                </h3>
+                <div class='item-price'>
+                  <span><%= item.price %>円<br><%= item.shopping_fee.name %></span>
+                  <div class='star-btn'>
+                    <%= image_tag "imageimage.png", class:"star-icon" %>
+                    <span class='star-count'>0</span>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      <% else %> 
+          <div class="list-none">
+            <p>商品が見つかりませんでした</p>
+          </div>
+      <% end %>
+    </ul>
+    </div>
+  </div>
+<%= render "shared/footer" %> 

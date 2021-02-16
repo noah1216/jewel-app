@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
 
   resources :my_users, only: [:show, :update, :edit]
+  resources :searchs, only: [:index]
+  get 'searchs/search'
   resources :items, except: :index do
     collection do
       get 'search'
