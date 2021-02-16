@@ -2,7 +2,7 @@ class SearchsController < ApplicationController
   before_action :search_product, only: [:index, :search]
 
   def index
-    @items = Item.all
+    @items = Item.order('created_at DESC')
     set_item_column  
   end
   
