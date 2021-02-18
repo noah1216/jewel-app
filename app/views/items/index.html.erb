@@ -2,6 +2,9 @@
 <div class='main'>
 
   <div class='title-contents'>
+    <div class="border-index">
+        <%= image_tag("border-index.png", class:"border-index-icon") %>
+    </div>
     <div class='catch-copy'>
       <div class='catch-copy-logo'>
         <%= image_tag("logo-icon2.png", class:"logo-index") %>
@@ -66,10 +69,9 @@
                 </h3>
                 <div class='item-price'>
                   <span><%= item.price %>円<br><%= item.shopping_fee.name %></span>
-                  <div class='star-btn'>
-                    <%= image_tag "imageimage.png", class:"star-icon" %>
-                    <span class='star-count'>0</span>
-                  </div>
+                <div class='star-btn' id="like_<%= item.id %>">
+                  <%= render "favorites/favorite", item: item %>
+                </div>
                 </div>
               </div>
             <% end %>

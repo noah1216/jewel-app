@@ -21,15 +21,22 @@ Rails.application.routes.draw do
     post 'address_sellers', to: 'sellers/registrations#create_address'
   end
 
+  resources :my_sellers, only: [:show, :update, :edit]
 
-  resources :my_users, only: [:show, :update, :edit]
+  resources :my_users, only: [:show, :update, :edit]do
+    get :favorites, on: :collection
+  end
+
   resources :searchs, only: [:index]
   get 'searchs/search'
+
   resources :items, except: :index do
     collection do
       get 'search'
     end
     resources :orders, only: [:index, :create]
+    resources :favorites, only: [:create, :destroy]
   end
+
   root to: "items#index"
 end

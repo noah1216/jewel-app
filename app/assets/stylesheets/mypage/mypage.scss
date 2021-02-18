@@ -1,0 +1,44 @@
+.contents-row{
+  width: 100vw;
+}
+
+.mypage-main{
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: image-url('login-image.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+
+.mypage-profile-box{
+  text-align: center;
+  height: 350px;
+}
+
+.mypage-profile-box h2{
+  margin-bottom: 50px;
+  font-size: 2em;
+  font-weight: bold;
+  color: rgb(252, 252, 252);
+}
+
+.profile-icon{  
+  height: 180px;
+
+}
+
+.mypage-update{
+  margin-top: 30px;
+}
+
+.edit_user{
+  width: 100%;
+  min-width: 800px;
+  height: 100%;
+  background-color: #312e29;
+  display: flex;
+  justify-content: center;
+}

@@ -9,6 +9,7 @@ class Item < ApplicationRecord
   belongs_to :seller
   has_one :order
   has_one_attached :image
+  has_many :favorites, dependent: :destroy
 
 
   validates :price, format: { with: /\A[0-9]+\z/ },

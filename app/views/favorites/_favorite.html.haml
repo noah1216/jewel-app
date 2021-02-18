@@ -1,0 +1,11 @@
+#favorite{ id: item.id }
+  - if !Favorite.exists?(user: current_user, item_id: item.id)   # お気に入り未登録の時
+    = link_to item_favorites_path(item), method: :post, remote: true, class: "favorite-index-btn" do
+      .i.far.fa-thumbs-up
+        = image_tag src="imageimage.png", class:"star-icon"
+        = item.favorites.length   # お気に入り登録数
+  - else    # お気に入り登録済みの時
+    = link_to item_favorite_path(item, item.favorites.ids), method: :delete, remote: true, class: "favorite-index-btn" do
+      .i.far.fa-thumbs-up
+        = image_tag src="imageimage.png", class:"star-icon"
+        = item.favorites.length   # お気に入り登録数

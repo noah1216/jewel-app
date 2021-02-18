@@ -7,7 +7,7 @@ class Seller < ApplicationRecord
         has_many :items
       
         with_options presence: true do
-          validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,100}+\z/i }
+          validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,100}+\z/i }, on: :create
           validates :nickname
           validates :family_name
           validates :first_name

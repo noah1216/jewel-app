@@ -64,3 +64,4 @@ gem 'uglifier'
 gem 'bootstrap'
 gem 'payjp'
 gem 'ransack'
+gem "haml-rails"
