@@ -5,9 +5,11 @@
     <div class="mypage-profile-box">
       <h2><%= @seller.nickname %></h2>
       <%= image_tag("profile_icon.png", class:"profile-icon") %>
+      <% if current_seller == @seller.id %>
       <div class="mypage-update">
         <%= link_to 'ユーザー編集',  edit_my_seller_path(current_seller.id), class: "default_link_white" %>
       </div>
+      <% end %>
     </div>
   </div>
 
