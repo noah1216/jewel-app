@@ -4,7 +4,7 @@ class DeviseCreateSellers < ActiveRecord::Migration[6.0]
   def change
     create_table :sellers do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
+      t.string :email,              null: false, unique: true, default: ""
       t.string :encrypted_password, null: false, default: ""
       t.string :nickname,           null: false
       t.string :family_name,        null: false

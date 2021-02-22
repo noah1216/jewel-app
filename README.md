@@ -41,13 +41,6 @@ Pass: 1111
 宝石を愛しながら、高いと思っている方に価格差がかなりあること、またいろいろな種類の宝石があることを知って欲しかったためです。
   
 出品者側:宝石業界が衰退していっているため、もっと一般の方に知ってもらい業界市場を盛り上げたいと思い、宝石門アプリを作成しました。
-## 洗い出した要件
-#### 検索機能（カテゴリー検索）
-#### ブックマーク、お気に入り
-#### 購入機能
-#### 購入者と販売者で登録ページの変更
-#### 商品出品機能
-#### マイページ
 
 ## 実装した機能についてのGIFと説明
 
@@ -56,7 +49,6 @@ Pass: 1111
 
 ## データベース設計
 ### users テーブル
-
 | Column             | Type    | Options     |
 | ------------------ | ------  | ----------- |
 | encrypted_password | string  | null: false |
@@ -66,12 +58,131 @@ Pass: 1111
 | first_name         | string  | null: false |
 | first_name_kana    | string  | null: false |
 | family_name_kana   | string  | null: false |
-| birthday           | date    | null: false |
+| text               | string  |             |
+
 
 #### Association
 - has_one :address_user
 - has_many :orders
 - has_many :favorites, dependent: :destroy  
+
+
+### sellers テーブル
+| Column             | Type    | Options     |
+| ------------------ | ------  | ----------- |
+| encrypted_password | string  | null: false |
+| email              | string  | null: false, unique: true|
+| nickname           | string  | null: false |
+| family_name        | string  | null: false |
+| first_name         | string  | null: false |
+| first_name_kana    | string  | null: false |
+| family_name_kana   | string  | null: false |
+| text               | string  |             |
+
+
+#### Association
+- has_one :address_seller
+- has_many :items
+
+
+### address_users テーブル
+| Column             | Type    | Options     |
+| ------------------ | ------  | ----------- |
+| postal_code        | string  | null: false |
+| area               | string  | null: false |
+| city               | string  | null: false |
+| block_number       | string  | null: false |
+| house_number       | string  |             |
+| phone_number       | string  | null: false |
+| user               | references | null: false, foreign_key: true |
+
+
+#### Association
+- belongs_to :user, optional: true
+
+
+### address_sellers テーブル
+| Column             | Type    | Options     |
+| ------------------ | ------  | ----------- |
+| postal_code        | string  | null: false |
+| area               | string  | null: false |
+| city               | string  | null: false |
+| block_number       | string  | null: false |
+| house_number       | string  |             |
+| phone_number       | string  | null: false |
+| seller             | references | null: false, foreign_key: true |
+
+
+#### Association
+- belongs_to :seller, optional: true
+
+
+### items テーブル
+| Column             | Type    | Options     |
+| ------------------ | ------  | ----------- |
+| name               | string  | null: false |
+| text               | string  | null: false |
+| category_id        | integer | null: false |
+| state_id           | integer | null: false |
+| area_id            | integer | null: false |
+| shopping_fee_id    | integer | null: false |
+| shopping_day_id    | integer | null: false |
+| price              | integer | null: false |
+| seller             | references  | null: false, foreign_key: true |
+
+
+#### Association
+- belongs_to :category
+- belongs_to :state
+- belongs_to :shopping_fee
+- belongs_to :shopping_day
+- belongs_to :area
+
+- belongs_to :seller
+- has_one :order
+- has_one_attached :image
+- has_many :favorites, dependent: :destroy
+
+
+### orders テーブル
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| item               | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
+
+
+
+#### Association
+- belongs_to :user
+- belongs_to :item
+
+
+### address_shippings テーブル
+| Column             | Type    | Options     |
+| ------------------ | ------  | ----------- |
+| postal_code        | string  | null: false |
+| area               | string  | null: false |
+| city               | string  | null: false |
+| block_number       | string  | null: false |
+| house_number       | string  |             |
+| phone_number       | string  | null: false |
+| order              | references | null: false, foreign_key: true |
+
+
+#### Association
+- belongs_to :order
+
+
+### favorites テーブル
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| item               | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
+
+
+#### Association
+- belongs_to :user
+- belongs_to :item
 
 
 ## ローカルでの動作方法
