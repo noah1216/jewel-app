@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          has_one :address_user
          has_many :orders
+         has_many :favorites, dependent: :destroy  
 
 
         with_options presence: true do
@@ -14,6 +15,7 @@ class User < ApplicationRecord
           validates :first_name
           validates :family_n_k
           validates :first_n_k
+          
         end
        
         # フリガナ(カタカナ)

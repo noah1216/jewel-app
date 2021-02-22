@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-  # before_action :authenticate_user!, except: [:index, :show]
   before_action :return_home, except: [:index, :show]
   
   def index
@@ -40,7 +39,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to edit_my_user_path(current_user.id)
+      redirect_to item_path(@item.id)
     else
       render :edit
     end

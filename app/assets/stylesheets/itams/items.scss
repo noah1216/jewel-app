@@ -25,9 +25,19 @@ a {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding: 5vh 15vw;
+  padding: 0 15vw 5vh 15vw;
   color: #fff;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
+}
+
+.border-index{
+  text-align: center;
+  padding-top: 30px;
+}
+
+.border-index-icon{
+  width: 50%;
+  height: 70px;
 }
 
 .catch-copy-logo{
@@ -42,7 +52,7 @@ a {
 
 .store-btn {
   display: flex;
-  margin: 60px 0 0 20px;
+  margin: 0 0 0 20px;
 }
 
 .apple-btn {
