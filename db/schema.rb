@@ -74,12 +74,12 @@ ActiveRecord::Schema.define(version: 2021_02_24_063002) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "text"
-    t.bigint "seller_id"
-    t.bigint "user_id"
+    t.integer "user_id"
+    t.integer "seller_id"
+    t.bigint "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["seller_id"], name: "index_comments_on_seller_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["item_id"], name: "index_comments_on_item_id"
   end
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -155,8 +155,7 @@ ActiveRecord::Schema.define(version: 2021_02_24_063002) do
   add_foreign_key "address_sellers", "sellers"
   add_foreign_key "address_shippings", "orders"
   add_foreign_key "address_users", "users"
-  add_foreign_key "comments", "sellers"
-  add_foreign_key "comments", "users"
+  add_foreign_key "comments", "items"
   add_foreign_key "favorites", "items"
   add_foreign_key "favorites", "users"
   add_foreign_key "items", "sellers"

@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     end
     resources :orders, only: [:index, :create]
     resources :favorites, only: [:create, :destroy]
+    resources :comments, only: :create
   end
 
   root to: "items#index"
