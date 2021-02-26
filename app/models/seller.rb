@@ -5,6 +5,7 @@ class Seller < ApplicationRecord
         :recoverable, :rememberable, :validatable
         has_one :address_seller
         has_many :items
+        has_many :comments
       
         with_options presence: true do
           validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,100}+\z/i }, on: :create

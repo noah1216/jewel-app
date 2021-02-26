@@ -74,7 +74,35 @@
     </div>
   </div>
   <%# /商品の概要 %>
+  <div class="comment-box">
+    <% if user_signed_in? || seller_signed_in? &&  current_seller.id == @item.seller.id %>
+      <%= form_with(model: [@item, @comment], local: true) do |form| %>
+        <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
+        <%= form.submit "SEND" %>
+      <% end %>
+    <% else %>
+      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+      <strong><p>※※※ 販売者はコメントできません ※※※</p></strong>
+    <% end %>
+  </div>
+      <div class="comments">
+      <h4>＜コメント一覧＞</h4>
+      <% @comments.each do |comment| %>
+      <% if comment.user_id != nil %>
+        <p>
+          <strong><%= link_to comment.user.nickname, my_user_path(comment.user_id) %>：</strong>
+          <%= comment.text %>
+        </p>
+      <% elsif comment.seller_id != nil %>
+        <p>
+          <strong><%= link_to comment.seller.nickname, my_seller_path(comment.seller_id) %>：</strong>
+          <%= comment.text %>
+        </p>
+      <% end %>
+      <% end %>
+    </div>
 
+    
   <div class="comment-box">
     <form>
       <textarea class="comment-text"></textarea>

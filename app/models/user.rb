@@ -6,7 +6,7 @@ class User < ApplicationRecord
          has_one :address_user
          has_many :orders
          has_many :favorites, dependent: :destroy  
-
+         has_many :comments
 
         with_options presence: true do
           validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,100}+\z/i }, on: :create
