@@ -25,7 +25,7 @@
   <div class='search-box'>
   <div class='search-bar-contents'>
     <ul class='lists-left'>
-      <li><%= link_to '詳細検索', searchs_path, class: "category-list default_link_brown" %></li>
+      <li><%= link_to 'カテゴリー検索', searchs_path, class: "category-list default_link_brown" %></li>
     </ul>
     <%= form_with(url: search_items_path, local: true, method: :get, class: "search-form") do |form| %>
       <%= form.text_field :keyword, placeholder: "キーワードを検索する", class: "input-box" %>

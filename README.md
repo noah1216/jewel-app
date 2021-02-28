@@ -8,6 +8,7 @@
 ・商品を検索することができます。  
 ・お気に入り機能があります。  
 ・マイページを閲覧できます。  
+・コメントすることができます
 
 ## URL
 https://jewel-33511.herokuapp.com/
@@ -45,7 +46,7 @@ Pass: 1111
 ## 実装した機能についてのGIFと説明
 
 ## 実装予定の機能
-・ユーザーのフォロー機能
+おすすめ機能
 
 ## データベース設計
 ### users テーブル
@@ -183,6 +184,23 @@ Pass: 1111
 #### Association
 - belongs_to :user
 - belongs_to :item
+
+
+*2020/2/27追加
+### comments テーブル
+| Column             | Type     | Options     |
+| ------------------ | -------- | ----------- |
+| text               | string   | null: false |
+| user_id            | integer  |             |
+| seller_id          | integer  |             |
+| item               | references  | foreign_key: true |
+
+
+#### Association
+
+- belongs_to :item
+- belongs_to :user , optional: true
+- belongs_to :seller, optional: true
 
 
 ## ローカルでの動作方法

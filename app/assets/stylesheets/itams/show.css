@@ -113,6 +113,21 @@
 
 
 /* /商品の概要 */
+.comments{
+  width: 50%;
+  margin-top: 40px;
+  padding: 0 20px;
+}
+.comments h4{
+  text-align: center;
+}
+
+.comment-text-box{
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+}
 
 .comment-box {
   width: 40vw;
@@ -137,13 +152,6 @@
 }
 
 .comment-btn {
-  line-height: 48px;
-  background-color: #3CCACE;
-  border: 1px solid #3CCACE;
-  color: #fff;
-  width: 50%;
-  min-width: 150px;
-  font-size: 18px;
   border-radius: 100px;
   margin-bottom: 2vh;
 }
@@ -178,3 +186,17 @@
   font-weight: bold;
   font-size: 23px;
 }
+
+
+a.default_link_midori:link,
+a.default_link_midori:visited,
+a.default_link_midori:active {
+  color: #208e92;
+  text-decoration: none;
+}
+
+a.default_link_midori:hover{
+  color: #e2ad1c;
+}
+
+
