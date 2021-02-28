@@ -1,0 +1,25 @@
+.login-commit-box{
+  width: 100%;
+  min-width: 800px;
+  height: 100vh;
+  background-color: #312e29;
+  display: flex;
+  justify-content: center;
+}
+
+.form-login-box{
+  margin: 90px;
+  height: 20%;
+  width: 40%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 40px;
+  padding: 30px;
+}
+
+.form-login-wrap{
+  text-align: center
+}
+
+.form-login-wrap h2{
+  margin-bottom: 20px;
+}
