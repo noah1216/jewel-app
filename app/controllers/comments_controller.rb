@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     # item_comments_path(comment.item.id)
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to root_path
+      redirect_to item_path(@comment.item.id)
     else
       redirect_to item_path(@comment.item.id)
     end
