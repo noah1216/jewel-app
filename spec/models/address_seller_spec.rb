@@ -16,13 +16,6 @@ RSpec.describe AddressSeller, type: :model do
       end
     end
 
-    # context '商品購入できないとき' do
-    #   it '郵便番号が空では登録できない' do
-    #     @address_seller.postal_code = ''
-    #     @address_seller.valid?
-    #     expect(@address_seller.errors.full_messages).to include()
-    #   end
-    # end
     context '商品購入できないとき' do
       it '郵便番号が空では登録できない' do
         @address_seller.postal_code = ''
@@ -69,16 +62,6 @@ RSpec.describe AddressSeller, type: :model do
         @address_seller.valid?
         expect(@address_seller.errors.full_messages).to include("Phone number is invalid")
       end
-      # it 'user_idが空では登録できない' do
-      #   @address_seller.user_id = ''
-      #   @address_seller.valid?
-      #   expect(@address_seller.errors.full_messages).to include("User can't be blank")
-      # end
-      # it 'item_idが空では登録できない' do
-      #   @address_seller.item_id = ''
-      #   @address_seller.valid?
-      #   expect(@address_seller.errors.full_messages).to include("Item can't be blank")
-      # end
     end
   end
 end

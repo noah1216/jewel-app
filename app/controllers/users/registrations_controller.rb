@@ -5,31 +5,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # # GET /resource/sign_up
-  # def new
-  #   @user = User.new
-  # end
-
-  # # POST /resource
-  # # def create
-  # #   @user = User.new(sign_up_params)
-  # #   unless @user.valid?
-  # #     render :new and return
-  # #   end
-  # #   # 次のページに値を保持するために必要
-  # #   session["devise.regist_data"] = {user: @user.attributes}
-  # #   session["devise.regist_data"][:user]["password"] = params[:user][:password]
-  # #   # addressのインスタンス生成
-  # #   @address = @user.build_address_user
-  # #   # addressesコントローラのnewを指定。
-  # #   render "address_users/new"
-  # # end
- 
-  # private
- 
-  # def address_params
-  #   params.require(:address_user).permit(:postal_code, :area, :city, :block_number, :phone_number, :house_number)
-  # end
-
   def new
     @user = User.new
   end
